@@ -1,6 +1,8 @@
 import { logger } from '@/lib/logger';
 
-export type KeyValidation = { valid: true } | { valid: false; reason: 'rejected' | 'network' };
+export type KeyValidation =
+  | { valid: true; message: string }
+  | { valid: false; reason: 'rejected' | 'network'; message: string };
 
 const REQUEST_TIMEOUT_MS = 10_000;
 
@@ -35,18 +37,18 @@ export async function validateApiKey(provider: string, apiKey: string): Promise<
   const endpoint = ENDPOINTS[provider];
   if (!endpoint) {
     logger.error('No API key validation endpoint for provider', provider);
-    return { valid: false, reason: 'network' };
+    return { valid: false, reason: 'network', message: 'Provider necunoscut.' };
   }
   try {
     const res = await fetch(endpoint.url, {
       headers: endpoint.headers(apiKey),
       signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
     });
-    if (res.ok) return { valid: true };
-    if (res.status === 401 || res.status === 403) return { valid: false, reason: 'rejected' };
-    return { valid: false, reason: 'network' };
+    if (res.ok) return { valid: true, message: 'Conexiunea cu furnizorul AI funcționează.' };
+    if (res.status === 401 || res.status === 403) return { valid: false, reason: 'rejected', message: 'Furnizorul a respins cheia API.' };
+    return { valid: false, reason: 'network', message: `Furnizorul a răspuns cu codul ${res.status}.` };
   } catch (err) {
     logger.error('API key validation request failed', err);
-    return { valid: false, reason: 'network' };
+    return { valid: false, reason: 'network', message: 'Furnizorul AI nu poate fi contactat.' };
   }
 }

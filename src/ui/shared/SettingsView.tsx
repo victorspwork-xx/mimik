@@ -46,32 +46,36 @@ type KeyStatus = 'checking' | 'valid' | 'rejected' | 'unreachable' | null;
 
 function useKeyCheck() {
   const [status, setStatus] = useState<KeyStatus>(null);
+  const [message, setMessage] = useState('');
   const validated = useRef('');
 
   const check = useCallback(async (provider: string, apiKey: string) => {
     const fingerprint = `${provider}:${apiKey}`;
     if (validated.current === fingerprint) {
       setStatus('valid');
+      setMessage('Conexiunea a fost verificată cu succes.');
       return;
     }
     setStatus('checking');
+    setMessage('Se verifică accesul la furnizorul AI…');
     const result = await sendMessage('validateApiKey', { provider, apiKey }).catch(() => null);
     if (result?.valid) validated.current = fingerprint;
     setStatus(result?.valid ? 'valid' : result?.reason === 'rejected' ? 'rejected' : 'unreachable');
+    setMessage(result?.message || 'Nu s-a putut verifica furnizorul AI.');
   }, []);
 
-  return { status, setStatus, check };
+  return { status, setStatus, check, message };
 }
 
-function KeyStatusNote({ status }: { status: KeyStatus }) {
+function KeyStatusNote({ status, message }: { status: KeyStatus; message?: string }) {
   if (status === 'checking') {
-    return <p className="mt-1 text-[11px] text-muted-foreground">{i18n.t('settings.validatingKey')}</p>;
+    return <p className="mt-1 text-[11px] text-muted-foreground">{message || i18n.t('settings.validatingKey')}</p>;
   }
   if (status === 'valid') {
     return (
       <p className="mt-1 text-[11px] flex items-center gap-1" style={{ color: 'var(--color-success)' }}>
         <Check size={11} />
-        {i18n.t('settings.keyValid')}
+        {message || i18n.t('settings.keyValid')}
       </p>
     );
   }
@@ -83,7 +87,7 @@ function KeyStatusNote({ status }: { status: KeyStatus }) {
     );
   }
   if (status === 'unreachable') {
-    return <p className="mt-1 text-[11px] text-muted-foreground">{i18n.t('settings.keyUnreachable')}</p>;
+      return <p className="mt-1 text-[11px] text-muted-foreground">{message || i18n.t('settings.keyUnreachable')}</p>;
   }
   return null;
 }
@@ -352,7 +356,7 @@ export default function SettingsView({ onBack }: SettingsViewProps) {
                 {i18n.t('settings.checkKey')}
               </Button>
             </div>
-            <KeyStatusNote status={aiKeyCheck.status} />
+            <KeyStatusNote status={aiKeyCheck.status} message={aiKeyCheck.message} />
             {!apiKey.trim() && provider !== 'omniroute' && (
               <p className="mt-1.5 flex items-start gap-1.5 text-[10px] text-destructive leading-relaxed" role="alert">
                 <TriangleAlert size={11} className="shrink-0 mt-0.5" />
@@ -553,7 +557,7 @@ export default function SettingsView({ onBack }: SettingsViewProps) {
                 {i18n.t('settings.checkKey')}
               </Button>
             </div>
-            <KeyStatusNote status={voiceKeyCheck.status} />
+            <KeyStatusNote status={voiceKeyCheck.status} message={voiceKeyCheck.message} />
             {voiceKey.source === 'ai' && (
               <p className="mt-1.5 flex items-start gap-1.5 text-[10px] text-muted-foreground leading-relaxed">
                 <Sparkles size={11} className="shrink-0 mt-0.5 text-accent" />

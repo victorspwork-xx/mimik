@@ -1,7 +1,10 @@
 import { i18n } from '#imports';
+import { localStorage } from '@/lib/browser-api';
 import type { ElementMeta } from '@/core/guides/types';
 
-export function buildFallbackDescription(action: string, meta: ElementMeta): string {
+export async function buildFallbackDescription(action: string, meta: ElementMeta): Promise<string> {
+  const settings = await localStorage.get(['aiLanguage']);
+  const locale = (settings.aiLanguage as string) || i18n.t('meta.locale');
   const target =
     meta.ariaLabel ||
     meta.placeholder ||
@@ -11,35 +14,37 @@ export function buildFallbackDescription(action: string, meta: ElementMeta): str
     meta.role ||
     meta.tag;
 
+  const tr = (key: string, substitutions: string[] = []) => i18n.t(key, substitutions, { locale });
+
   if (action.startsWith('keydown:')) {
     const key = action.split(':')[1];
-    return i18n.t('steps.pressKey', [key, target]);
+    return tr('steps.pressKey', [key, target]);
   }
 
   switch (action) {
     case 'click':
     case 'auxclick':
-      if (meta.tag === 'input' && meta.inputType === 'checkbox') return i18n.t('steps.toggleCheckbox', [target]);
-      if (meta.tag === 'input' && meta.inputType === 'radio') return i18n.t('steps.selectRadio', [target]);
-      if (meta.role === 'switch') return i18n.t('steps.toggleSwitch', [target]);
-      if (meta.role === 'checkbox') return i18n.t('steps.toggleCheckbox', [target]);
-      if (meta.role === 'radio') return i18n.t('steps.selectRadio', [target]);
-      if (meta.href) return i18n.t('steps.clickLink', [target]);
-      return i18n.t('steps.click', [target]);
+      if (meta.tag === 'input' && meta.inputType === 'checkbox') return tr('steps.toggleCheckbox', [target]);
+      if (meta.tag === 'input' && meta.inputType === 'radio') return tr('steps.selectRadio', [target]);
+      if (meta.role === 'switch') return tr('steps.toggleSwitch', [target]);
+      if (meta.role === 'checkbox') return tr('steps.toggleCheckbox', [target]);
+      if (meta.role === 'radio') return tr('steps.selectRadio', [target]);
+      if (meta.href) return tr('steps.clickLink', [target]);
+      return tr('steps.click', [target]);
     case 'input':
-      if (meta.inputType) return i18n.t('steps.typeIntoField', [meta.inputType, target]);
-      return i18n.t('steps.typeInto', [target]);
+      if (meta.inputType) return tr('steps.typeIntoField', [meta.inputType, target]);
+      return tr('steps.typeInto', [target]);
     case 'copy':
-      return i18n.t('steps.copyFrom', [target]);
+      return tr('steps.copyFrom', [target]);
     case 'paste':
-      return i18n.t('steps.pasteInto', [target]);
+      return tr('steps.pasteInto', [target]);
     case 'cut':
-      return i18n.t('steps.cutFrom', [target]);
+      return tr('steps.cutFrom', [target]);
     case 'drag':
-      return i18n.t('steps.drag', [target]);
+      return tr('steps.drag', [target]);
     case 'navigate':
-      return i18n.t('steps.navigate');
+      return tr('steps.navigate');
     default:
-      return i18n.t('steps.defaultAction', [action, target]);
+      return tr('steps.defaultAction', [action, target]);
   }
 }

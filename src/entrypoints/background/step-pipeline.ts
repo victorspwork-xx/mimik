@@ -94,7 +94,7 @@ export async function handleCaptureStep(data: CaptureStepData): Promise<CaptureS
     id: stepId,
     guideId,
     index: stepIndex,
-    description: buildFallbackDescription(data.action, data.elementMeta),
+    description: await buildFallbackDescription(data.action, data.elementMeta),
     action: data.action,
     url: snap.context.currentUrl,
     timestamp,
