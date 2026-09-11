@@ -80,7 +80,7 @@ export async function handleCaptureStep(data: CaptureStepData): Promise<CaptureS
   const screenshotId = await takeScreenshot(stepId, data.elementMeta);
 
   const narrationCapturing = getVoiceUpdate().phase === 'recording';
-  const aiSettings = await localStorage.get(['aiApiKey', 'aiProvider']);
+  const aiSettings = await localStorage.get(['aiApiKey', 'aiProvider', 'aiLanguage']);
   const hasAiKey = !!aiSettings.aiApiKey || aiSettings.aiProvider === 'omniroute';
   const willUseAI = shouldQueueAiDescription({
     action: data.action,
@@ -94,7 +94,7 @@ export async function handleCaptureStep(data: CaptureStepData): Promise<CaptureS
     id: stepId,
     guideId,
     index: stepIndex,
-    description: await buildFallbackDescription(data.action, data.elementMeta),
+    description: buildFallbackDescription(data.action, data.elementMeta, aiSettings.aiLanguage as string | undefined),
     action: data.action,
     url: snap.context.currentUrl,
     timestamp,
