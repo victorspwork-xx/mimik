@@ -110,6 +110,7 @@ export interface RewriteSelectionResponse {
 export interface ValidateApiKeyData {
   provider: string;
   apiKey: string;
+  model?: string;
 }
 
 export interface ValidateApiKeyResponse {
@@ -146,6 +147,7 @@ interface MimikProtocol {
   startNarration(): StartNarrationResponse;
   generateGuideDescription(data: GenerateGuideDescriptionData): GenerateGuideDescriptionResponse;
   validateApiKey(data: ValidateApiKeyData): ValidateApiKeyResponse;
+  testAIGeneration(data: ValidateApiKeyData): ValidateApiKeyResponse;
   rewriteSelection(data: RewriteSelectionData): RewriteSelectionResponse;
 }
 

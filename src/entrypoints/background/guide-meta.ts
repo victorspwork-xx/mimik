@@ -40,6 +40,18 @@ async function resolveGuideMetaInputs(guideId: string): Promise<GuideMetaInputs>
   };
 }
 
+async function fallbackGuideDescription(steps: { description: string; url: string }[]): Promise<string | undefined> {
+  const settings = await localStorage.get(['aiLanguage']);
+  const locale = (settings.aiLanguage as string) || 'en';
+  if (!locale.toLowerCase().startsWith('ro')) return undefined;
+  const first = steps[0]?.description?.replace(/[.!?]+$/, '');
+  const last = steps.at(-1)?.description?.replace(/[.!?]+$/, '');
+  if (first && last && first !== last) {
+    return `Acest ghid prezintă pașii pentru a finaliza fluxul în browser: ${first.toLowerCase()}, apoi ${last.toLowerCase()}.`;
+  }
+  return 'Acest ghid prezintă pașii necesari pentru a finaliza fluxul în browser.';
+}
+
 async function applyFallbackTitle(guideId: string) {
   const domain = await getGuideDomain(guideId);
   await updateGuideTitle(
@@ -89,10 +101,11 @@ export async function generateDescriptionOnDemand(guideId: string): Promise<Gene
     if (!inputs.ok) return { error: inputs.reason };
 
     const meta = await generateGuideMeta(inputs.steps, inputs.provider, inputs.model, inputs.apiKey);
-    if (!meta?.description) return { error: 'generation-failed' };
+    const description = meta?.description || (await fallbackGuideDescription(inputs.steps));
+    if (!description) return { error: 'generation-failed' };
 
-    await updateGuideDescription(guideId, meta.description);
-    return { description: meta.description };
+    await updateGuideDescription(guideId, description);
+    return { description };
   } catch (err) {
     logger.error('On-demand description generation failed', err);
     return { error: 'save-failed' };

@@ -49,8 +49,8 @@ function useKeyCheck() {
   const [message, setMessage] = useState('');
   const validated = useRef('');
 
-  const check = useCallback(async (provider: string, apiKey: string) => {
-    const fingerprint = `${provider}:${apiKey}`;
+  const check = useCallback(async (provider: string, apiKey: string, model?: string) => {
+    const fingerprint = `${provider}:${model || ''}:${apiKey}`;
     if (validated.current === fingerprint) {
       setStatus('valid');
       setMessage('Conexiunea a fost verificată cu succes.');
@@ -58,7 +58,7 @@ function useKeyCheck() {
     }
     setStatus('checking');
     setMessage('Se verifică accesul la furnizorul AI…');
-    const result = await sendMessage('validateApiKey', { provider, apiKey }).catch(() => null);
+    const result = await sendMessage('testAIGeneration', { provider, apiKey, model }).catch(() => null);
     if (result?.valid) validated.current = fingerprint;
     setStatus(result?.valid ? 'valid' : result?.reason === 'rejected' ? 'rejected' : 'unreachable');
     setMessage(result?.message || 'Nu s-a putut verifica furnizorul AI.');
@@ -350,7 +350,7 @@ export default function SettingsView({ onBack }: SettingsViewProps) {
                 variant="outline"
                 size="sm"
                 disabled={(!apiKey && provider !== 'omniroute') || aiKeyCheck.status === 'checking'}
-                onClick={() => void aiKeyCheck.check(provider, apiKey)}
+                 onClick={() => void aiKeyCheck.check(provider, apiKey, model)}
                 className="h-8 shrink-0 rounded-lg bg-card text-[11px] font-semibold"
               >
                 {i18n.t('settings.checkKey')}
