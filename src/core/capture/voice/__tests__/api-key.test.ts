@@ -106,14 +106,16 @@ describe('resolveVoiceApiKey', () => {
 describe('hasVoiceApiKey', () => {
   it('is true when a key resolves and false when none does', () => {
     expect(hasVoiceApiKey({ voiceProvider: 'openai', aiApiKey: 'sk-ai' })).toBe(true);
-    expect(hasVoiceApiKey({ voiceProvider: 'groq', aiApiKey: 'sk-ai' })).toBe(false);
-    expect(hasVoiceApiKey({})).toBe(false);
+     expect(hasVoiceApiKey({ voiceProvider: 'groq', aiApiKey: 'sk-ai' })).toBe(false);
+     expect(hasVoiceApiKey({ voiceProvider: 'deepseek', aiProvider: 'deepseek', aiApiKey: 'sk-ai' })).toBe(true);
+     expect(hasVoiceApiKey({})).toBe(false);
   });
 });
 
 describe('normalizeVoiceProvider', () => {
-  it('accepts groq and defaults everything else to openai', () => {
+  it('accepts groq and deepseek and defaults everything else to openai', () => {
     expect(normalizeVoiceProvider('groq')).toBe('groq');
+    expect(normalizeVoiceProvider('deepseek')).toBe('deepseek');
     expect(normalizeVoiceProvider('openai')).toBe('openai');
     expect(normalizeVoiceProvider('whisper.cpp')).toBe('openai');
     expect(normalizeVoiceProvider(undefined)).toBe('openai');

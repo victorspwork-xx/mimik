@@ -341,7 +341,7 @@ function VoiceStep({ onNext, onSkip, onBack, index, total }: StepProps) {
   useEffect(() => {
     const load = () =>
       localStorage.get(['voiceProvider', 'voiceApiKey', 'voiceMicrophoneId']).then((stored) => {
-        if (stored.voiceProvider === 'openai' || stored.voiceProvider === 'groq') setProvider(stored.voiceProvider);
+        if (stored.voiceProvider === 'openai' || stored.voiceProvider === 'groq' || stored.voiceProvider === 'deepseek') setProvider(stored.voiceProvider);
         if (typeof stored.voiceApiKey === 'string') setApiKey(stored.voiceApiKey);
         if (typeof stored.voiceMicrophoneId === 'string') setMicrophoneId(stored.voiceMicrophoneId);
       });
@@ -394,6 +394,7 @@ function VoiceStep({ onNext, onSkip, onBack, index, total }: StepProps) {
                 >
                   <option value="openai">OpenAI</option>
                   <option value="groq">Groq</option>
+                  <option value="deepseek">DeepSeek</option>
                 </select>
               </div>
               <div className="flex-1">

@@ -22,7 +22,8 @@ function trimmed(value: unknown): string {
 }
 
 export function normalizeVoiceProvider(value: unknown): VoiceProvider {
-  return value === 'groq' ? 'groq' : 'openai';
+  if (value === 'groq' || value === 'deepseek') return value;
+  return 'openai';
 }
 
 export function resolveVoiceApiKey(settings: VoiceKeySettings): ResolvedVoiceApiKey {
@@ -32,6 +33,7 @@ export function resolveVoiceApiKey(settings: VoiceKeySettings): ResolvedVoiceApi
 
   const shared = trimmed(settings.aiApiKey);
   const aiProvider = trimmed(settings.aiProvider) || 'openai';
+  if (provider === 'deepseek' && aiProvider === 'deepseek' && shared) return { provider, apiKey: shared, source: 'ai' };
   if (provider !== 'openai' || aiProvider !== 'openai' || !shared) {
     return { provider, apiKey: '', source: 'none' };
   }

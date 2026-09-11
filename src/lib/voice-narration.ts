@@ -37,7 +37,9 @@ export const EMPTY_NARRATION: NarrationResult = {
 export async function readTranscriptionSettings(): Promise<TranscriptionSettings> {
   const stored = await localStorage.get([...VOICE_KEY_SETTINGS, 'voiceLanguage', 'aiLanguage']);
   const { provider, apiKey } = resolveVoiceApiKey(stored);
-  const locale = (stored.voiceLanguage ?? stored.aiLanguage) as string | undefined;
+  // The AI description language is the single language choice for both written and voice guides.
+  // Keep the legacy voiceLanguage key as a fallback for existing profiles only.
+  const locale = (stored.aiLanguage ?? stored.voiceLanguage) as string | undefined;
   return {
     provider,
     apiKey,

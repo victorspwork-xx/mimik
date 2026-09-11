@@ -1,6 +1,6 @@
 import type { TranscriptionResponse } from './types';
 
-export type VoiceProvider = 'openai' | 'groq';
+export type VoiceProvider = 'openai' | 'groq' | 'deepseek';
 
 export interface TranscribeConfig {
   provider: VoiceProvider;
@@ -11,6 +11,7 @@ export interface TranscribeConfig {
 const PROVIDERS: Record<VoiceProvider, { url: string; model: string }> = {
   openai: { url: 'https://api.openai.com/v1/audio/transcriptions', model: 'whisper-1' },
   groq: { url: 'https://api.groq.com/openai/v1/audio/transcriptions', model: 'whisper-large-v3' },
+  deepseek: { url: 'https://api.deepseek.com/audio/transcriptions', model: 'whisper-1' },
 };
 
 const ERROR_BODY_LIMIT = 200;

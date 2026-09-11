@@ -526,7 +526,8 @@ export default function SettingsView({ onBack }: SettingsViewProps) {
               className="w-full border border-border rounded-lg px-3 py-2 text-[13px] text-foreground bg-card font-medium outline-none focus:border-ring focus:ring-2 focus:ring-ring/10"
             >
               <option value="openai">OpenAI</option>
-              <option value="groq">Groq</option>
+               <option value="groq">Groq</option>
+               <option value="deepseek">DeepSeek</option>
             </select>
           </div>
 
@@ -540,7 +541,7 @@ export default function SettingsView({ onBack }: SettingsViewProps) {
                   setVoiceApiKey(e.target.value);
                   voiceKeyCheck.setStatus(null);
                 }}
-                placeholder={voiceProvider === 'groq' ? 'gsk_...' : 'sk-...'}
+                 placeholder={voiceProvider === 'groq' ? 'gsk_...' : voiceProvider === 'deepseek' ? 'sk-...' : 'sk-...'}
               />
               <Button
                 variant="outline"
