@@ -64,7 +64,10 @@ export async function generateGuideMeta(
   const formatted = steps.map((s, i) => `${i + 1}. [${s.url}] ${s.description}`).join('\n');
   const settings = await localStorage.get(['aiLanguage']);
   const locale = (settings.aiLanguage as string) || 'en';
-  const prompt = GUIDE_META_PROMPT.replace('{{steps}}', formatted) + getLanguageSuffix(locale);
+  const languageInstruction = locale.startsWith('ro')
+    ? '\nIMPORTANT — LIMBA OBLIGATORIE: Scrie exclusiv în limba română. Folosește diacriticele românești ă, â, î, ș și ț. Nu răspunde în engleză.'
+    : getLanguageSuffix(locale);
+  const prompt = GUIDE_META_PROMPT.replace('{{steps}}', formatted) + languageInstruction;
   const aiModel = createModel(provider, model, apiKey);
 
   try {
@@ -72,7 +75,7 @@ export async function generateGuideMeta(
       model: aiModel,
       schema: guideMetaSchema,
       prompt,
-      maxOutputTokens: 200,
+      maxOutputTokens: 300,
     });
     return toGuideMeta(object.title, object.description);
   } catch (err) {
@@ -83,7 +86,7 @@ export async function generateGuideMeta(
     const { text } = await generateText({
       model: aiModel,
       prompt: prompt + GUIDE_META_JSON_SUFFIX,
-      maxOutputTokens: 200,
+      maxOutputTokens: 300,
     });
     return parseGuideMeta(text);
   } catch (err) {

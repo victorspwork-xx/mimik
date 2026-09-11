@@ -15,11 +15,14 @@ export async function getAIDescription(
   try {
     const settings = await localStorage.get(['aiLanguage']);
     const locale = (settings.aiLanguage as string) || 'en';
+    const languageInstruction = locale.startsWith('ro')
+      ? '\nIMPORTANT — LIMBA OBLIGATORIE: Scrie exclusiv în limba română. Folosește diacriticele românești ă, â, î, ș și ț. Nu răspunde în engleză, chiar dacă textul interfeței sau exemplele sunt în engleză.'
+      : getLanguageSuffix(locale);
     const { text } = await generateText({
       model: createModel(provider, model, apiKey),
       prompt:
-        STEP_DESCRIPTION_PROMPT.replace('{{context}}', serializeDOMContext(domContext)) + getLanguageSuffix(locale),
-      maxOutputTokens: 50,
+        STEP_DESCRIPTION_PROMPT.replace('{{context}}', serializeDOMContext(domContext)) + languageInstruction,
+      maxOutputTokens: 100,
     });
     return text.trim().replace(/^"|"$/g, '') || null;
   } catch (err) {

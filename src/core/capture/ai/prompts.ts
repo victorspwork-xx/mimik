@@ -1,14 +1,19 @@
-export const STEP_DESCRIPTION_PROMPT = `You are describing steps in a browser workflow guide. Given the following context about a user action on a web page, write a single concise sentence describing this step.
+export const STEP_DESCRIPTION_PROMPT = `You are describing steps in a browser workflow guide. Given the following context about a user action on a web page, write one useful, specific instruction for the person following the guide.
 
 {{context}}
 
-Examples of good descriptions:
-- "Click the Submit button"
-- "Enter email address in the Email field"
-- "Select 'Admin' from the Role dropdown"
-- "Navigate to the Settings page"
+Rules:
+- Describe the exact action and the visible target or field.
+- Include relevant visible values, page names, or choices from the context when available.
+- Do not invent information and do not expose passwords, tokens, or private values.
+- Write one complete sentence, preferably 8–25 words, with enough detail to reproduce the action.
+- Return only the instruction, with no preamble, quotation marks, or bullet.
 
-Write only the description, no preamble.`;
+English examples:
+- Click the Submit button to send the completed form.
+- Enter the email address in the Email field.
+- Select Admin from the Role dropdown.
+- Open the Settings page from the account menu.`;
 
 export const GUIDE_META_PROMPT = `These are the steps of a browser workflow, with the page URL and description for each step:
 
@@ -78,7 +83,7 @@ const LANGUAGE_NAMES: Record<string, string> = {
   fr: 'French',
   pt: 'Brazilian Portuguese',
   de: 'German',
-  ro: 'Romanian',
+  ro: 'Romanian (limba română; folosește diacriticele ă, â, î, ș, ț)',
   ja: 'Japanese',
   ko: 'Korean',
   zh: 'Chinese',
