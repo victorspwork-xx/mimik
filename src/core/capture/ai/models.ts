@@ -38,6 +38,11 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
       { id: 'deepseek-v4-flash-vision-exp', label: 'DeepSeek V4 Flash Vision Exp' },
     ],
   },
+  omniroute: {
+    label: 'OmniRoute (local)',
+    defaultModel: 'auto',
+    models: [{ id: 'auto', label: 'Auto (OmniRoute)' }],
+  },
 };
 
 export type AIProviderKey = keyof typeof AI_PROVIDERS;

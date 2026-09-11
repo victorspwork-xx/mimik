@@ -4,9 +4,8 @@ import { localStorage } from '@/lib/browser-api';
 
 export async function generateAiDescription(domContext: DOMContext): Promise<string | undefined> {
   const settings = await localStorage.get(['aiApiKey', 'aiProvider', 'aiModel']);
-  if (!settings.aiApiKey) return undefined;
-
   const provider = (settings.aiProvider as string) || 'openai';
+  if (!settings.aiApiKey && provider !== 'omniroute') return undefined;
   const model = (settings.aiModel as string) || 'gpt-4o-mini';
   const description = await getAIDescription(domContext, provider, model, settings.aiApiKey as string);
   return description || undefined;

@@ -50,8 +50,8 @@ export default defineConfig({
         ...(isFirefox ? [] : ["sidePanel", "offscreen"]),
       ],
       ...(isFirefox
-        ? { optional_host_permissions: ["<all_urls>"] }
-        : { host_permissions: ["<all_urls>"], minimum_chrome_version: "118" }),
+        ? { optional_host_permissions: ["<all_urls>", "http://localhost:20128/*"] }
+        : { host_permissions: ["<all_urls>", "http://localhost:20128/*"], minimum_chrome_version: "118" }),
       icons: {
         16: 'icon16.png',
         32: 'icon32.png',

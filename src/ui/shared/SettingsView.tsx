@@ -345,7 +345,7 @@ export default function SettingsView({ onBack }: SettingsViewProps) {
               <Button
                 variant="outline"
                 size="sm"
-                disabled={!apiKey || aiKeyCheck.status === 'checking'}
+                disabled={(!apiKey && provider !== 'omniroute') || aiKeyCheck.status === 'checking'}
                 onClick={() => void aiKeyCheck.check(provider, apiKey)}
                 className="h-8 shrink-0 rounded-lg bg-card text-[11px] font-semibold"
               >
@@ -353,11 +353,14 @@ export default function SettingsView({ onBack }: SettingsViewProps) {
               </Button>
             </div>
             <KeyStatusNote status={aiKeyCheck.status} />
-            {!apiKey.trim() && (
+            {!apiKey.trim() && provider !== 'omniroute' && (
               <p className="mt-1.5 flex items-start gap-1.5 text-[10px] text-destructive leading-relaxed" role="alert">
                 <TriangleAlert size={11} className="shrink-0 mt-0.5" />
                 <span>{i18n.t('settings.aiNoKey')}</span>
               </p>
+            )}
+            {provider === 'omniroute' && (
+              <p className="mt-1.5 text-[10px] text-muted-foreground">OmniRoute local: http://localhost:20128/v1 · cheia API este opțională.</p>
             )}
           </div>
 

@@ -57,7 +57,8 @@ async function takeScreenshot(stepId: string, meta: ElementMeta): Promise<string
 }
 
 async function tryAIDescription(stepId: string, domContext: DOMContext) {
-  if (!(await localStorage.get(['aiApiKey'])).aiApiKey) return;
+  const settings = await localStorage.get(['aiApiKey', 'aiProvider']);
+  if (!settings.aiApiKey && settings.aiProvider !== 'omniroute') return;
   try {
     await clearStepAiPending(stepId, await generateAiDescription(domContext));
   } catch (err) {
@@ -79,7 +80,8 @@ export async function handleCaptureStep(data: CaptureStepData): Promise<CaptureS
   const screenshotId = await takeScreenshot(stepId, data.elementMeta);
 
   const narrationCapturing = getVoiceUpdate().phase === 'recording';
-  const hasAiKey = !!(await localStorage.get(['aiApiKey'])).aiApiKey;
+  const aiSettings = await localStorage.get(['aiApiKey', 'aiProvider']);
+  const hasAiKey = !!aiSettings.aiApiKey || aiSettings.aiProvider === 'omniroute';
   const willUseAI = shouldQueueAiDescription({
     action: data.action,
     hasDomContext: !!data.domContext,

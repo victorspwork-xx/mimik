@@ -53,8 +53,8 @@ describe('getLanguageSuffix', () => {
 });
 
 describe('AI_LANGUAGES', () => {
-  it('has 6 supported languages', () => {
-    expect(AI_LANGUAGES).toHaveLength(6);
+  it('has 7 supported languages', () => {
+    expect(AI_LANGUAGES).toHaveLength(7);
   });
 
   it('includes English as first entry', () => {
@@ -63,6 +63,11 @@ describe('AI_LANGUAGES', () => {
 
   it('includes Simplified Chinese', () => {
     expect(AI_LANGUAGES).toContainEqual({ code: 'zh-CN', label: '中文' });
+  });
+
+  it('includes Romanian', () => {
+    expect(AI_LANGUAGES).toContainEqual({ code: 'ro-RO', label: 'Română' });
+    expect(getLanguageSuffix('ro-RO')).toContain('Romanian');
   });
 
   it('each entry has code and label', () => {

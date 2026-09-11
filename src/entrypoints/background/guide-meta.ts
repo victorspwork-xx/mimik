@@ -23,13 +23,14 @@ type GuideMetaInputs =
 
 async function resolveGuideMetaInputs(guideId: string): Promise<GuideMetaInputs> {
   const settings = await localStorage.get(['aiApiKey', 'aiProvider', 'aiModel']);
-  if (!settings.aiApiKey) return { ok: false, reason: 'no-api-key' };
+  const configuredProvider = (settings.aiProvider as string) || 'openai';
+  if (!settings.aiApiKey && configuredProvider !== 'omniroute') return { ok: false, reason: 'no-api-key' };
 
   const steps = actionSteps(await getStepsForGuide(guideId));
   const described = steps.filter((s) => s.description).map((s) => ({ description: s.description, url: s.url }));
   if (described.length === 0) return { ok: false, reason: 'no-steps' };
 
-  const provider = (settings.aiProvider as string) || 'openai';
+  const provider = configuredProvider;
   return {
     ok: true,
     steps: described.length > 15 ? [...described.slice(0, 10), ...described.slice(-5)] : described,

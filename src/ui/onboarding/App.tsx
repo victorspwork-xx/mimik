@@ -214,9 +214,12 @@ function AISetupStep({ onNext, onSkip, onBack, index, total }: StepProps) {
                 type="password"
                 value={apiKey}
                 onChange={(e) => handleApiKeyChange(e.target.value)}
-                placeholder="sk-..."
+                placeholder={provider === 'omniroute' ? 'Opțional pentru OmniRoute local' : 'sk-...'}
                 className="w-full rounded-xl px-4 py-2.5 text-sm focus:border-accent focus:ring-accent/10"
               />
+              {provider === 'omniroute' && (
+                <p className="mt-1.5 text-xs text-muted-foreground">OmniRoute local: http://localhost:20128/v1 · cheia API este opțională.</p>
+              )}
             </div>
 
             <div>

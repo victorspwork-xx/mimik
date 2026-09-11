@@ -1,0 +1,526 @@
+meta:
+  locale: ro-RO
+
+app:
+  name: Mimik
+  store_title: "Mimik: Ghiduri și tutoriale pas cu pas"
+  description: "Înregistrează orice flux de lucru din browser ca ghid pas cu pas. Editează, adaugă narațiune vocală, exportă în video, PDF sau DOCX. Local, open-source."
+
+common:
+  loading: Se încarcă...
+  cancel: Anulează
+  save: Salvează
+  delete: Șterge
+  back: Înapoi
+  continue: Continuă
+  skip: Omite
+  export: Exportă
+  close: Închide
+  undo: Anulează
+  star: Adaugă la favorite
+  unstar: Elimină din favorite
+  restore: Restaurează
+  updated: "Actualizat la v$1"
+  whatsNew: Vezi noutățile
+
+sidepanel:
+  connected: Conectat
+  connecting: Se conectează...
+  heroTitle: Ce vrei să capturezi?
+  heroSubtitle: Înregistrează automat orice flux de lucru
+  startCapture: Începe capturarea
+  searchPlaceholder: Caută ghiduri...
+  recentLabel: Recente
+  notRecordable: Deschide un site web pentru a începe capturarea
+
+library:
+  noGuidesTitle: Încă nu există ghiduri
+  noGuidesSub: Începe o capturare pentru a crea primul ghid
+  noStarredTitle: Nu există ghiduri favorite
+  noStarredSub: Adaugă un ghid la favorite pentru a-l găsi rapid
+  trashEmptyTitle: Coșul de gunoi este gol
+  trashEmptySub: Curat lună!
+  noMatchingGuides: Nu există ghiduri potrivite
+  moveToTrash: Mută în coșul de gunoi
+  deletePermanently: Șterge definitiv
+  openInFullView: Deschide în vizualizare completă
+
+guideme:
+  live: În direct
+  roadblock: "Am întâmpinat un obstacol. Încearcă să acționezi pe ecran pentru a continua."
+  manualStep: "Acest pas a fost editat, deci nu poate fi detectat automat. Folosește Următorul după ce l-ai finalizat."
+  stepOf: "Pasul $1 din $2"
+  noDescription: Fără descriere
+  prev: Anteriorul
+  next: Următorul
+  finish: "Finalizează"
+  exitTitle: Pleci?
+  exitMessage: Parcurgerea ghidului se va opri, iar suprapunerea de pe pagină va fi eliminată.
+  stay: Rămâi
+  exit: Ieși
+  guideNotFound: Ghid negăsit
+
+guidemeCompletion:
+  title: "Gata, campionule!"
+  stepsCompleted: "Un pas din $1 finalizat."
+  stepsCompletedPlural: "Toți cei $1 pași au fost finalizați."
+  allDone: Totul e gata
+  runAgain: Rulează din nou
+
+recording:
+  capturePaused: Capturare întreruptă
+  recording: "Se înregistrează \xB7 $1 pas"
+  recordingPlural: "Se înregistrează \xB7 $1 pași"
+  readyTitle: Gata de capturare!
+  readySub: Fă clic pe pagină pentru a începe
+  finishRecording: Finalizează înregistrarea
+  smartBlur: Estompare inteligentă
+  discard: Renunță
+  deleteStep: Șterge pasul
+  justNow: Chiar acum
+  secondsAgo: "acum $1 s"
+  minutesAgo: "acum $1 min"
+
+settings:
+  title: Setări
+  aiDescriptions: Descrieri AI
+  provider: Furnizor
+  model: Model
+  modelCustom: Model personalizat
+  apiKey: Cheie API
+  aiLanguage: Limba descrierilor
+  voiceNarration: Narațiune vocală
+  voiceUsingAiKey: "Nu este setată nicio cheie pentru voce, astfel încât Mimik folosește cheia OpenAI din Descrieri AI de mai sus."
+  aiNoKey: "Nu este setată nicio cheie API, astfel încât pașii vor folosi descrieri simple, bazate pe reguli."
+  voiceNoKey: "Nu este setată nicio cheie API, astfel încât înregistrările tale nu vor avea narațiune."
+  microphone: Microfon
+  microphoneDefault: Implicit al sistemului
+  microphoneNeedsAccess: Permite accesul la microfon pentru a vedea numele dispozitivelor tale.
+  microphoneGrantAccess: Permite accesul la microfon
+  microphoneNone: Nu a fost găsit niciun microfon. Conectează unul și va apărea aici.
+  microphoneUnavailable: Microfon indisponibil
+  microphoneMissing: Microfonul ales nu este disponibil acum, astfel încât Mimik va folosi microfonul implicit al sistemului.
+  microphoneTest: Testează microfonul
+  microphoneStatusAllowed: Permis
+  microphoneStatusBlocked: Blocat
+  microphoneStatusPending: Încă nepermis
+  microphoneBlocked: Browserul tău blochează microfonul pentru Mimik. Deschide setările site-ului din pictograma din stânga barei de adrese și setează Microfonul la Permite.
+  microphoneUnblockHow: Cum îl deblochez?
+  microphoneTestStop: Oprește testul
+  microphoneTestFailed: Microfonul respectiv nu a putut fi deschis. Alege altul și încearcă din nou.
+  targetColor: "Culoarea mărcii"
+  targetColorHint: "Evidențieri la clic și accente la export"
+  branding: "Branding pentru export"
+  brandLogo: "Siglă"
+  uploadLogo: "Încarcă sigla"
+  replaceLogo: "Înlocuiește"
+  removeLogo: "Elimină sigla"
+  footerLine: "Text de subsol"
+  footerLinePlaceholder: "ex. Confidențial — numai pentru uz intern"
+  footerPresetConfidential: "Confidențial — numai pentru uz intern"
+  footerPresetNoDistribute: "Nu distribui"
+  attribution: 'Afișează "Realizat cu Mimik"'
+  saveSettings: Salvează setările
+  saved: Salvat
+  validatingKey: "Se verifică cheia…"
+  keyValid: Cheia API a fost verificată.
+  keyInvalid: Acea cheie API a fost respinsă. Verific-o și încearcă din nou.
+  checkKey: Verifică cheia
+  keyUnreachable: Furnizorul nu a putut fi contactat. Verifică conexiunea și încearcă din nou.
+  smartBlur: Estompare inteligentă
+  privacyNotice: "Cheile și fișierele tale audio ajung doar la furnizorul ales. Nimic altceva nu părăsește browserul tău."
+  bugReport: "Ai găsit o eroare? Raporteaz-o pe GitHub"
+  starCtaTitle: "Îți place ce vezi?"
+  starCtaMessage: O stea pe GitHub îi ajută pe alții să găsească Mimik și ne menține motivați!
+  starOnGithub: Adaugă o stea pe GitHub
+
+blurPresets:
+  email: E-mail
+  phoneNumbers: Numere de telefon
+  ssn: SSN
+  creditCard: Card de credit
+  ipAddress: Adresă IP
+  macAddress: Adresă MAC
+
+fullview:
+  allGuides: Toate ghidurile
+  starred: Favorite
+  trash: Coș de gunoi
+  searchPlaceholder: Caută ghiduri...
+  guideMe: Ghidează-mă
+  untitledGuide: Ghid fără titlu
+  writingTitle: Se scrie un titlu din pașii capturați...
+  writingDescription: "Se scrie o descriere…"
+  guideNotFound: "Ghid negăsit."
+  stepCount: "$1 pas"
+  stepCountPlural: "$1 pași"
+  pageOf: "$1 / $2"
+
+sort:
+  recentFirst: Cele mai recente întâi
+  oldestFirst: Cele mai vechi întâi
+  alphaAZ: "A — Z"
+  mostSteps: Cei mai mulți pași
+  gridView: Vizualizare grilă
+  listView: Vizualizare listă
+
+search:
+  startTyping: Începe să tastezi pentru a găsi un ghid
+  noMatchingGuides: Nu există ghiduri potrivite
+  noGuidesYet: Încă nu există ghiduri
+
+keyboard:
+  navigate: navighează
+  open: deschide
+  close: închide
+
+confirmDelete:
+  title: "Ștergi ghidul?"
+  message: Acest ghid va fi șters definitiv. Acțiunea nu poate fi anulată.
+  confirm: Șterge definitiv
+
+editor:
+  backToLibrary: Înapoi la bibliotecă
+  openInDashboard: Deschide
+  openInDashboardHint: Deschide în panoul de control pentru a edita sau exporta
+  guideMe: Ghidează-mă
+  guideMeUnavailable: Acest ghid nu conține pași care pot fi reluați
+  deleteThisStep: "Ștergi acest pas?"
+  selectStep: Selectează pasul
+  selectedCount: "$1 selectat"
+  deleteSelectedStep: "Ștergi $1 pas selectat?"
+  deleteSelectedSteps: "Ștergi $1 pași selectați?"
+  copyScreenshot: Copiază captura de ecran
+  noScreenshot: Nicio captură de ecran
+  edit: Editează
+  done: Gata
+  versionHistory: Istoricul versiunilor
+  moreActions: Mai multe acțiuni
+  generateDescription: Generează descrierea
+  regenerateDescription: Regenerează descrierea
+  generatingDescription: "Se generează…"
+  descriptionPlaceholder: Adaugă o descriere
+  descriptionErrorNoApiKey: Adaugă o cheie API AI în setări pentru a genera descrieri.
+  descriptionErrorNoSteps: Acest ghid nu are pași descriși de rezumat.
+  descriptionErrorFailed: Descrierea nu a putut fi generată. Încearcă din nou.
+  descriptionErrorSaveFailed: Descrierea a fost generată, dar nu a putut fi salvată. Încearcă din nou.
+  writingStepDescription: "Se scrie descrierea…"
+  transcribingStepDescription: "Se transcrie ce ai spus…"
+  rewriteAskAi: Întreabă AI
+  rewritePlaceholder: "Spune-i AI-ului cum să editeze acest text…"
+  rewriteEnter: Introdu
+  rewriteShorter: Mai scurt
+  rewriteDetail: Mai multe detalii
+  rewriteGrammar: Corectează gramatica
+  rewriteFormal: Mai formal
+  rewriteCasual: Mai relaxat
+  rewriteReplace: Înlocuiește
+  rewriteDiscard: Renunță
+  rewriteErrorNoApiKey: Adaugă o cheie API AI în setări pentru a rescrie textul.
+  rewriteErrorFailed: Selecția nu a putut fi rescrisă. Încearcă din nou.
+  rewriteErrorStale: Textul s-a modificat. Selectează-l din nou.
+
+capture:
+  recordSteps: Înregistrează pașii
+  moreStepsTitle: Capturează mai mulți pași
+  moreStepsBody: Pașii noi sunt inserați aici. Alege fila în care să înregistrezi.
+  startCapture: Începe capturarea
+  noRecordableTabs: Nu există file care pot fi înregistrate deschise în această fereastră.
+
+blocks:
+  add: Adaugă bloc
+  heading: Titlu
+  callout: Notă
+  headingPlaceholder: Titlul secțiunii
+  calloutPlaceholder: Scrie o notă
+  deleteHeading: "Ștergi acest titlu?"
+  deleteCallout: "Ștergi această notă?"
+  variantInfo: Informații
+  variantWarning: Avertisment
+  variantError: Eroare
+  variantSuccess: Reușită
+  variantCustom: Personalizat
+
+history:
+  title: Istoricul versiunilor
+  current: Curentă
+  restore: Restaurează
+  unchangedVersions: "Versiuni neschimbate ($1)"
+  readOnlyBanner: "Vizualizezi o versiune anterioară. Închide Istoricul versiunilor pentru a reveni la ghidul curent."
+  loadError: Istoricul versiunilor nu a putut fi încărcat. Încearcă din nou.
+  restoreError: Restaurarea nu a reușit. Încearcă din nou peste puțin timp.
+  storageFull: Nu există suficient spațiu de stocare pentru a salva un punct de anulare. Șterge un ghid și încearcă din nou.
+  empty: Încă nu există versiuni anterioare. Acestea vor apărea aici după ce editezi ghidul.
+  nameVersion: Denumește această versiune
+  namePlaceholder: Numele versiunii
+  allVersions: Toate versiunile
+  namedOnly: Numai versiunile denumite
+  emptyNamed: Încă nu există versiuni denumite. Denumește una pentru a o găsi mai târziu.
+  renameError: Numele nu a putut fi salvat. Încearcă din nou.
+  changeTitle: Titlu modificat
+  changeStepAdded: "$1 pas adăugat"
+  changeStepsAdded: "$1 pași adăugați"
+  changeStepRemoved: "$1 pas șters"
+  changeStepsRemoved: "$1 pași șterși"
+  changeStepEdited: "$1 pas editat"
+  changeStepsEdited: "$1 pași editați"
+  changeStepReordered: Pași reordonați
+  changeLink: "$1 link modificat"
+  changeLinks: "$1 linkuri modificate"
+  changeImageReplaced: "$1 imagine înlocuită"
+  changeImagesReplaced: "$1 imagini înlocuite"
+  changeImageCropped: "$1 imagine decupată"
+  changeImagesCropped: "$1 imagini decupate"
+  changeImageAnnotated: "$1 imagine adnotată"
+  changeImagesAnnotated: "$1 imagini adnotate"
+  changeImageBlurred: "$1 imagine estompată"
+  changeImagesBlurred: "$1 imagini estompate"
+  changeAltText: Text alternativ editat
+
+emptyGuide:
+  title: Acest ghid este gol
+  subtitle: Dă-i viață înregistrând câțiva pași
+
+blurPanel:
+  title: Estompare inteligentă
+  manualMode: Mod manual
+  selectElements: Selectează elementele de estompat
+  done: Gata
+  doneResume: "Gata \xB7 Reia înregistrarea"
+  resetAll: Resetează totul
+
+screenshotView:
+  zoomIn: Mărește
+  zoomOut: Micșorează
+  saved: Salvat
+  editMenu: Editează captura de ecran
+  downloadEdited: "Imagine editată"
+  downloadOriginal: "Imagine originală"
+  edit: "Editează"
+  addImage: Adaugă imagine
+  replaceImage: Înlocuiește imaginea
+  replaceHint: "Alege o imagine nouă pentru acest pas"
+  replaceDrop: "Fă clic pentru a răsfoi sau plasează o imagine aici"
+  replaceFormats: "PNG, JPG sau WebP"
+  download: Descarcă
+  deleteImage: Șterge imaginea
+  deleteConfirm: "Ștergi această captură de ecran? Acțiunea nu poate fi anulată."
+  imageDeleted: Imagine ștearsă
+  altButton: ALT
+  altLabel: Text alternativ
+  altPlaceholder: Descrie această imagine pentru cititoarele de ecran
+
+annotationEditor:
+  title: Editează captura de ecran
+  toolBox: Casetă
+  toolArrow: Săgeată
+  toolText: Text
+  toolSelect: "Selectează"
+  addTarget: "Adaugă țintă de clic"
+  toolRedact: Redactează
+  toolCrop: Decupează
+  colorLabel: Culoare
+  textPlaceholder: Tastează ceva...
+  targetBorder: Stilul marginii
+  modeAnnotate: "Adnotează"
+  toolLine: "Linie"
+  duplicate: "Duplică"
+  toolEllipse: "Elipsă"
+  lineColor: "Culoarea liniei"
+  fillColor: "Culoarea umplerii"
+  lineWidth: "Grosimea liniei"
+  cornerRadius: "Raza colțurilor"
+  font: "Font"
+  bold: "Aldin"
+  italic: "Cursiv"
+  lineHeight: "Înălțimea liniei"
+  width_none: "Fără contur"
+  width_xs: "Foarte mic"
+  width_sm: "Mic"
+  width_ms: "Mediu-mic"
+  width_md: "Mediu"
+  width_ml: "Mediu-mare"
+  width_lg: "Mare"
+  width_xl: "Foarte mare"
+  zoom: "Zoom"
+  cropHint: "Trage pentru decupare sau trage de un colț pentru a redimensiona"
+  resetCrop: "Resetează decuparea"
+  arrowEnd: "Capătul săgeții"
+  fontSize: "Dimensiunea fontului"
+  undo: "Anulează"
+  redo: "Reface"
+  end_none: "Niciunul"
+  end_bar: "Bară"
+  end_arrow: "Săgeată"
+  end_arrow_solid: "Săgeată plină"
+  end_circle: "Cerc"
+  end_circle_solid: "Cerc plin"
+  end_square: "Pătrat"
+  end_square_solid: "Pătrat plin"
+  done: Gata
+
+exportPreview:
+  stepDescriptions: "Legendele pașilor"
+  stepDescriptionsHint: "Desenează textul pasului pe fiecare cadru video"
+  resolution: "Calitate video"
+  gifQuality: "Calitate GIF"
+  gif_low: "Scăzută"
+  gif_medium: "Medie"
+  gif_high: "Ridicată"
+  res_720p: "720p"
+  res_1080p: "1080p"
+  title: "Previzualizare export"
+  cover: "Pagină de copertă"
+  coverHint: "O primă pagină separată cu titlul și detaliile"
+  screenshots: "Capturi de ecran"
+  screenshotsHint: "Dezactivează pentru un document compact, numai cu text"
+  stepUrls: "Linkurile pașilor"
+  stepUrlsHint: "Afișează adresa paginii pe care s-a efectuat fiecare pas"
+  imageScale: "Dimensiunea capturii de ecran"
+  scale_small: "Mică"
+  scale_medium: "Medie"
+  scale_large: "Mare"
+  download: "Exportă $1"
+  rendering: "Se actualizează previzualizarea"
+  videoReady: "$1 pași · aproximativ $2 min de video"
+  videoReadyHint: "Ghidurile lungi nu sunt codificate automat. Previzualizarea include fiecare pas."
+  videoGenerate: "Generează previzualizarea"
+  modeDocument: "Document"
+  modeVideo: "Video"
+  encodingVideo: "Se codifică previzualizarea video"
+  videoFailed: "Previzualizarea video nu a putut fi creată"
+videoPlayer:
+  stepCount: "$1 pași"
+  previousStep: "Pasul anterior"
+  nextStep: "Pasul următor"
+  speed: "Viteza de redare"
+
+exportMenu:
+  docx: DOCX
+  html: HTML
+  markdown: Markdown
+  pdf: PDF
+  gif: GIF
+  video: Video
+  cancelProgress: "Anulează · $1%"
+
+onboarding:
+  welcomeBadge: Bun venit
+  welcomeTitle: "Ai instalat cu succes Mimik!"
+  welcomeMessage: "În doar câțiva pași, vei putea captura automat fluxuri de lucru din browser și genera ghiduri pas cu pas. Nu ai nevoie de cont — totul rămâne în browserul tău."
+  getStarted: Începe
+  stepOf: "Pasul $1 din $2"
+  aiTitle: Descrieri AI
+  aiMessage: Conectează propria cheie API pentru a obține descrieri ale pașilor generate de AI. Este opțional și poate fi schimbat ulterior din setări.
+  aiGenerated: Generat de AI
+  aiGeneratedDescription: Descriere generată de AI
+  voiceTitle: Vorbește, apoi acționează
+  voiceMessage: Spune ce urmează să faci, apoi fă acel lucru. Mimik asociază narațiunea cu acțiunea care o urmează, astfel încât ordinea contează mai mult decât orice altceva.
+  voiceRecordHint: Narațiunea rămâne dezactivată până o activezi. Folosește butonul de microfon din panoul lateral în timpul înregistrării, astfel încât să alegi pentru fiecare ghid.
+  voiceDataNotice: Fișierul tău audio este trimis furnizorului ales aici, folosind propria ta cheie API. Nimic altceva din Mimik nu părăsește browserul tău.
+  voiceDemoLabel: Cum se aplică narațiunea
+  voiceDemoSay: Tu spui
+  voiceDemoQuote: "Acum voi deschide setările de facturare"
+  voiceDemoAct: Apoi faci clic
+  voiceDemoAction: Fă clic pe fila Facturare
+  voiceDemoBadge: Din vocea ta
+  blurTitle: Estompare inteligentă
+  blurMessage: Estompează automat informațiile sensibile din capturile de ecran. Alege tiparele de detectat.
+  screenshotPreview: Previzualizarea capturii de ecran
+  notEnabled: Neactivat
+  categoriesProtected: "$1 categorii protejate"
+  pinTitle: Fixează Mimik
+  pinMessage: Fixează extensia în bara de instrumente pentru acces rapid. Fă clic pe pictograma de puzzle din Chrome, apoi fixează Mimik.
+  pinStep1Title: Fă clic pe pictograma de puzzle
+  pinStep1Sub: În partea din dreapta sus a barei de instrumente a browserului
+  pinStep2Title: Găsește Mimik
+  pinStep2Sub: În meniul extensiilor
+  pinStep3Title: Fă clic pe pictograma de fixare
+  pinStep3Sub: Mimik va apărea în bara de instrumente
+  pinScreenshotAlt: Fixează extensia Mimik
+  starTitle: Ne acorzi o stea?
+  starMessage: "Mimik este gratuit și open-source. O stea este cea mai simplă modalitate de a spune mulțumesc și îi ajută pe alții să-l găsească."
+  starAction: Adaugă o stea pe GitHub
+  starLater: Poate mai târziu
+  doneTitle: "Totul este pregătit!"
+  doneMessage: "Mimik este gata să-ți captureze fluxurile de lucru. Fă clic pe \"Începe capturarea\" în extensie pentru a înregistra primul ghid."
+  featureAutoCapture: Capturare automată
+  featureAIAssist: Asistență AI
+  featureVoice: Narațiune vocală
+  featureAnnotate: Adnotează și redactează
+  featureExports: Exportă oriunde
+  featureSmartBlur: Estompare inteligentă
+  openMimik: Deschide Mimik
+
+steps:
+  pressKey: "Apasă $1 pe $2"
+  toggleCheckbox: "Bifează/debifează $1"
+  selectRadio: "Selectează $1"
+  toggleSwitch: "Comută $1"
+  clickLink: 'Fă clic pe linkul "$1"'
+  click: "Fă clic pe $1"
+  typeIntoField: "Tastează în câmpul $1 $2"
+  typeInto: "Tastează în $1"
+  typeSecret: "Tastează parola"
+  copyFrom: "Copiază din $1"
+  pasteInto: "Lipește în $1"
+  cutFrom: "Decupează din $1"
+  drag: "Trage $1"
+  navigate: Navighează la pagină
+  defaultAction: "$1 $2"
+
+export:
+  guideLabel: "GHID"
+  endLabel: "GHID FINALIZAT"
+  stepsRange: "Pașii $1–$2 din $3"
+  stepOf: "Pasul $1 din $2"
+  madeWith: "Realizat cu Mimik"
+  created: Creat
+  source: Sursă
+  step: Pas
+  steps: Pași
+  stepLabel: "Pasul $1"
+  stepsCount: "$1 pași"
+  createdLabel: "Creat la $1"
+  sourceLabel: "Sursă: $1"
+
+background:
+  guideOnDomain: "Ghid pe $1"
+  newGuide: Ghid nou
+
+voice:
+  turnOn: Activează narațiunea vocală
+  turnOff: Dezactivează narațiunea vocală
+  needsApiKey: Adaugă o cheie API pentru transcriere în Setări pentru a folosi narațiunea
+  micStarting: Se pornește microfonul...
+  micHearing: Te ascultă
+  micQuiet: Fără sunet
+  nextRecording: Narațiunea vocală este activată și începe cu următoarea înregistrare.
+  orderHint: Spune ce urmează să faci, apoi fă acel lucru. Cuvintele tale se atașează următoarei acțiuni.
+  transcribing: Se transcrie narațiunea ta...
+  transcribingHint: Descrierile pașilor se vor actualiza automat după finalizare.
+  narrated: "Narațiune adăugată la $1 pas."
+  narratedPlural: "Narațiune adăugată la $1 pași."
+  narratedNone: Nicio narațiune nu s-a potrivit cu pașii tăi, astfel încât descrierile nu s-au modificat.
+  guideSafe: Ghidul și capturile tale de ecran sunt în siguranță. S-a pierdut doar narațiunea.
+  openSettings: Deschide setările
+  errorPermissionDenied: Accesul la microfon a fost blocat, astfel încât nu s-a înregistrat nicio narațiune.
+  errorNoDevice: Nu a fost găsit niciun microfon, astfel încât nu s-a înregistrat nicio narațiune.
+  errorNoAudio: Microfonul nu a captat niciun sunet, astfel încât nu a existat nimic de transcris.
+  errorMissingApiKey: Narațiunea vocală necesită un furnizor de transcriere și o cheie API.
+  errorStreamEnded: Microfonul s-a oprit pe parcurs, astfel încât narațiunea s-a încheiat mai devreme.
+  errorNotRecording: Narațiunea vocală nu era activă, astfel încât nu a existat nimic de transcris.
+  errorAlreadyRecording: Narațiunea vocală era deja activă, astfel încât această înregistrare nu a primit narațiune.
+  errorUnsupported: Acest browser nu poate înregistra narațiune vocală.
+  errorUnknown: Narațiunea vocală s-a oprit neașteptat.
+
+micPermission:
+  title: Permite accesul la microfon
+  checkingMessage: Se verifică dacă Mimik are deja acces la microfon...
+  promptingMessage: Browserul tău solicită permisiunea. Alege Permite pentru ca Mimik să poată înregistra narațiunea în timp ce capturezi un ghid. Această filă se închide automat.
+  grantedTitle: Microfon pregătit
+  grantedMessage: Te ducem înapoi la ce făceai.
+  deniedTitle: Accesul la microfon este blocat
+  deniedMessage: Browserul tău blochează microfonul pentru Mimik, astfel încât narațiunea vocală nu poate fi înregistrată. Deschide setările site-ului din pictograma din stânga barei de adrese, setează Microfonul la Permite, apoi încearcă din nou. Capturarea ghidurilor funcționează în continuare fără acesta.
+  retry: Încearcă din nou
+  privacy: Fișierul audio este păstrat numai în memorie în timpul înregistrării și este trimis furnizorului de transcriere configurat de tine. Mimik nu îl stochează niciodată.

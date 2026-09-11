@@ -25,6 +25,10 @@ const ENDPOINTS: Record<string, { url: string; headers: (key: string) => Record<
     url: 'https://api.deepseek.com/models',
     headers: (key) => ({ Authorization: `Bearer ${key}` }),
   },
+  omniroute: {
+    url: 'http://localhost:20128/v1/models',
+    headers: (key): Record<string, string> => (key ? { Authorization: `Bearer ${key}` } : {}),
+  },
 };
 
 export async function validateApiKey(provider: string, apiKey: string): Promise<KeyValidation> {
