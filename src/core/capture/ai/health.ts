@@ -14,7 +14,7 @@ export async function testAIGeneration(provider: string, model: string, apiKey: 
     const { text } = await generateText({
       model: createModel(provider, model, apiKey),
       prompt: 'Răspunde exact cu: OK',
-      maxOutputTokens: 8,
+      maxOutputTokens: 16,
     });
     if (!text.trim()) return { ok: false, message: 'Furnizorul AI nu a returnat niciun text.' };
     return { ok: true, message: `Generarea AI funcționează (${text.trim().slice(0, 40)}).` };
