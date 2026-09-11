@@ -147,7 +147,8 @@ export default function SettingsView({ onBack }: SettingsViewProps) {
       .then((result) => {
         const p = (result.aiProvider as AIProviderKey) || 'openai';
         setProvider(p);
-        setModel((result.aiModel as string) || AI_PROVIDERS[p].defaultModel);
+        const storedModel = typeof result.aiModel === 'string' ? result.aiModel : '';
+        setModel(AI_PROVIDERS[p].models.some((option) => option.id === storedModel) ? storedModel : AI_PROVIDERS[p].defaultModel);
         if (result.aiApiKey) setApiKey(result.aiApiKey as string);
         if (result.aiLanguage) setAiLanguage(result.aiLanguage as AILanguageCode);
         if (result.blurPresets) setBlurPresets(result.blurPresets as Record<PresetKey, boolean>);

@@ -31,9 +31,9 @@ export const AI_PROVIDERS: Record<string, AIProviderConfig> = {
   },
   deepseek: {
     label: 'DeepSeek',
-    defaultModel: 'deepseek-v4-flash',
+    defaultModel: 'deepseek-flash',
     models: [
-      { id: 'deepseek-v4-flash', label: 'DeepSeek V4 Flash' },
+      { id: 'deepseek-flash', label: 'DeepSeek Flash' },
       { id: 'deepseek-v4-pro', label: 'DeepSeek V4 Pro' },
       { id: 'deepseek-v4-flash-vision-exp', label: 'DeepSeek V4 Flash Vision Exp' },
     ],

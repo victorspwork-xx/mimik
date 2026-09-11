@@ -126,7 +126,7 @@ function AISetupStep({ onNext, onSkip, onBack, index, total }: StepProps) {
         if (typeof stored.aiProvider === 'string' && stored.aiProvider in AI_PROVIDERS) {
           setProvider(stored.aiProvider as AIProviderKey);
         }
-        if (typeof stored.aiModel === 'string') setModel(stored.aiModel);
+         if (typeof stored.aiModel === 'string' && AI_PROVIDERS[stored.aiProvider as AIProviderKey || 'openai']?.models.some((option) => option.id === stored.aiModel)) setModel(stored.aiModel);
         if (typeof stored.aiApiKey === 'string') setApiKey(stored.aiApiKey);
         if (typeof stored.aiLanguage === 'string') setAiLanguage(stored.aiLanguage as AILanguageCode);
       });

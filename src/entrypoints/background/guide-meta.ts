@@ -35,7 +35,9 @@ async function resolveGuideMetaInputs(guideId: string): Promise<GuideMetaInputs>
     ok: true,
     steps: described.length > 15 ? [...described.slice(0, 10), ...described.slice(-5)] : described,
     provider,
-    model: (settings.aiModel as string) || AI_PROVIDERS[provider].defaultModel,
+    model: AI_PROVIDERS[provider] && AI_PROVIDERS[provider].models.some((option) => option.id === settings.aiModel)
+      ? (settings.aiModel as string)
+      : AI_PROVIDERS[provider]?.defaultModel || 'auto',
     apiKey: settings.aiApiKey as string,
   };
 }
